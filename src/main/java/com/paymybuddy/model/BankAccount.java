@@ -1,6 +1,7 @@
 package com.paymybuddy.model;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 @Data
@@ -8,7 +9,8 @@ import javax.persistence.*;
 @Table(name = "bankaccount")
 public class BankAccount {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     @Column(name="id_bankaccount")
     private int bankAccountId;
     @Column(name="id_user")

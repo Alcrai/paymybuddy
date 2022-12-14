@@ -53,6 +53,7 @@ public class TransferService {
         return solde[0];
     }
 
+    @Transactional
     public Transaction saveTransaction(Transaction transaction) {
         Transaction transactionInverse= new Transaction();
         transactionInverse.setAccountSendId(transaction.getAccountReceiveId());
@@ -71,7 +72,7 @@ public class TransferService {
         transactionRepository.save(transaction);
         return transaction;
     }
-
+    @Transactional
     public Transaction saveTransationExterne(Transaction transaction) {
         float commission = (float)(transaction.getAmount()*0.005);
         Transaction tcommission = new Transaction();
