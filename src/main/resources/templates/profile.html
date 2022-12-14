@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<link rel="stylesheet" href="../css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+  <div class="container mt-3">
+    <div class="row ">
+      <div class="col-3">
+        <button class="btn btn-primary bg-success text-white">Pay My Buddy</button>
+      </div>
+      <div class="col-9">
+        <nav class="navbar-light">
+          <ul class="nav justify-content-end text-black">
+            <li class="nav-item">  <a class="nav-link text-dark" href="/">Home</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/transfer">Transfer</a> </li>
+            <li class="nav-item">  <a class="nav-link" href="/profile">Profile</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="contact">Contact</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/logout">Log Off</a> </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container bg-light">
+    <h3 class="text-primary ">Home/ <span class="text-black-50">Profile</span></h3>
+  </div>
+</head>
+<body>
+  <div class="container p-3">
+    <div class="row m-5">
+
+      <div class="row">
+        <div class="col-auto">
+          <h2>Profile</h2>
+        </div>
+
+        <div class="col-auto">
+          <form th:method="get" th:action="@{/updateprofile}">
+          <button class="btn btn-success text-white" type="submit">Update Profile</button>
+          </form>
+        </div>
+      </div>
+      <div class="bg-light">
+        <p>Firstname : <span th:text="${profile.firstName}">firstname</span></p>
+        <p>Lastname : <span th:text="${profile.lastName}">Lastname</span></p>
+        <p>Email : <span th:text="${profile.email}">email</span></p>
+        <p>Password : <span >......</span></p>
+        <p>Bank Name : <span th:text="${profile.nameBank}">iban</span></p>
+        <p>Iban : <span th:text="${profile.iban}">iban</span></p>
+      </div>
+
+    </div>
+
+    <div class="row m-5">
+      <form th:method="get" th:action="@{/transferprofile}">
+      <div class="col-auto">
+        <h2>Balance : <span th:text="${balance}">balance</span></h2>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-success text-white" type="submit">Transfer/Supply</button>
+      </div>
+      </form>
+    </div>
+
+  </div>
+
+
+</body>
+</html>

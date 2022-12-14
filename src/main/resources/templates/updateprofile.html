@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<link rel="stylesheet" href="../css/style.css" />
+<head>
+  <meta charset="UTF-8">
+  <title>UpdateProfile</title>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-3">
+        <button class="btn btn-primary bg-success text-white">Pay My Buddy</button>
+      </div>
+      <div class="col-9">
+        <nav class="navbar-light">
+          <ul class="nav justify-content-end text-black">
+            <li class="nav-item">  <a class="nav-link text-dark" href="/">Home</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/transfer">Transfer</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/profile">Profile</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="contact">Contact</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/logout">Log Off</a> </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container bg-light">
+    <h3 class="text-primary">Home/ <span class="text-black-50">Profile</span></h3>
+  </div>
+  </div>
+</head>
+<body>
+
+  <div class="container p-3">
+    <div class="row m-5">
+      <form th:method="post" th:action="@{/updateprofile}" th:object="${profile}">
+      <div class="row">
+        <div class="col-auto">
+          <h2>Profile</h2>
+        </div>
+
+        <div class="col-auto">
+
+            <button class="btn btn-success text-white" type="submit">Validate</button>
+
+        </div>
+      </div>
+      <div class="bg-light">
+        <p>Firstname : <span th:text="${profile.firstName}">firstname</span></p>
+        <p>Lastname : <span th:text="${profile.lastName}">Lastname</span></p>
+        <p>Email : <span th:text="${profile.email}">email</span></p>
+        <p>Password : <span >...... </span><input type="password" name="password" class="form-control" placeholder="Change Password"></p>
+        <p>Bank Name : <span th:text="${profile.nameBank}">NameBank </span><input type="text" name="nameBank" class="form-control" id="namebank" placeholder="Change Bank Name"></p>
+        <p>Iban : <span th:text="${profile.iban}">iban </span><input type="text" name="iban" class="form-control" id="iban" placeholder="Change Iban"></p>
+      </div>
+      </form>
+    </div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0"/>
+<title>Transfer</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<head>
+    <title>Transfer</title>
+    <meta charset="UTF-8">
+    <div class="container mt-3">
+        <div class="row ">
+            <div class="col-3">
+                <button class="btn btn-success text-white">Pay My Buddy</button>
+            </div>
+            <div class="col-9">
+                <nav class="navbar-light">
+                    <ul class="nav justify-content-end text-black">
+                        <li class="nav-item"><a class="nav-link text-dark" href="/">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="/transfer">Transfer</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/logout">Log Off</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-light">
+        <h3 class="text-primary ">Home/ <span class="text-black-50">Transfer</span></h3>
+    </div>
+</head>
+<body>
+<div class="container p-3">
+    <div class="row m-5">
+        <div class="col-10 ">
+            <h2>Send Money</h2>
+        </div>
+        <div class="col-2 justify-content-end ">
+            <form th:method="get" th:action="@{/contact}">
+                <button class="btn btn-primary " type="submit">Add Connection</button>
+            </form>
+        </div>
+
+        <div class="bg-light">
+            <form class="row  justify-content-md-center p-2" th:method="get" th:action="@{/validatetransfer}">
+
+                <div class="col-auto">
+                    <select name="accountReceiveId" class="form-select" id="friend-select">
+                        <option value="0">Select Connection</option>
+                        <option th:each="option: ${options}" th:value="${option.bankAccountId}"
+                                th:text="${option.name}">One
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-auto">
+                    <input type="number" name="amount" class="form-control" id="amount" placeholder="0€">
+                </div>
+
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success text-white btn-block">Pay</button>
+                </div>
+
+            </form>
+            <p><span class="bg-danger text-white" th:text="${information}"></span></p>
+        </div>
+    </div>
+
+    <div class="row m-5">
+        <h2>My Transactions</h2>
+        <table class="table table-borderless table-striped text-center align-middle">
+            <thead>
+            <tr class="bg-success text-white justified align-middle ">
+                <th class="col-md-2">Connections</th>
+                <th class="col-md-2">Description</th>
+                <th class="col-md-2">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="t:${transactionList}">
+                <td th:text="${t.name}">col1</td>
+                <td th:text="${t.comment}"> col2</td>
+                <td th:text="${t.amount}+' €'"> col3</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <nav aria-label="Pagination" th:if="${totalPages > 0}">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                    <a th:replace="fragments/paging :: paging(1, '<<', 'First Page')"></a>
+                </li>
+                <li class="page-item font-weight-bold" th:classappend="${currentPage == 1} ? 'disabled'">
+                    <a th:replace="fragments/paging :: paging(${currentPage - 1}, 'Prev', 'Previous Page')"></a>
+                </li>
+                <li class="page-item disabled" th:if="${currentPage - 2 > 1}">
+                    <a class="page-link" href="#">...</a>
+                </li>
+                <li class="page-item" th:classappend="${page == currentPage} ? 'active'"
+                    th:each="page : ${#numbers.sequence(currentPage > 2 ? currentPage - 2 : 1, currentPage + 2 < totalPages ? currentPage + 2 : totalPages)}">
+                    <a th:replace="fragments/paging :: paging(${page}, ${page}, 'Page ' + ${page})"></a>
+                </li>
+                <li class="page-item disabled" th:if="${currentPage + 2 < totalPages}">
+                    <a class="page-link" href="#">...</a>
+                </li>
+                <li class="page-item font-weight-bold" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                    <a th:replace="fragments/paging :: paging(${currentPage + 1},'Next', 'Next Page')"></a>
+                </li>
+                <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                    <a th:replace="fragments/paging :: paging(${totalPages}, '>>', 'Last Page')"></a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+</body>
+</html>

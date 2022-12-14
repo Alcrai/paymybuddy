@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<link rel="stylesheet" href="../css/style.css" />
+<head>
+  <meta charset="UTF-8">
+  <title>AddContact</title>
+  <div class="container mt-3">
+    <div class="row ">
+      <div class="col-3">
+        <button class="btn btn-primary bg-success text-white">Pay My Buddy</button>
+      </div>
+      <div class="col-9">
+        <nav class="navbar-light">
+          <ul class="nav justify-content-end text-black">
+            <li class="nav-item">  <a class="nav-link text-dark" href="/">Home</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/transfer">Transfer</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/profile">Profile</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="contact">Contact</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/logout">Log Off</a> </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container bg-light">
+    <h3 class="text-primary ">Home/ <span class="text-black-50">Add Contact</span></h3>
+  </div>
+</head>
+<body>
+<div class="container">
+  <h2>Add Contact</h2>
+  <div class="rows">
+    <form  th:action="@{/contact}" method="post">
+      <div class="container">
+      </div>
+      <div class="row">
+        <div class="col-auto">
+
+          <p>Buddy exist :<span th:text="${email}"></span></p>
+
+        </div>
+        <div class="col-auto">
+          <p><span class="bg-danger text-white" th:text="${information}"></span></p>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-success text-white" type="submit" name="addContact">Add Contact </button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+</body>
+</html>

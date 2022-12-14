@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<link rel="stylesheet" href="../css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <title>logout</title>
+    <div class="container mt-3">
+        <div class="row ">
+            <div class="col-3">
+                <button class="btn btn-success text-white">Pay My Buddy</button>
+            </div>
+            <div class="col-9">
+                <nav class="navbar-light">
+                    <ul class="nav justify-content-end text-black">
+                        <li class="nav-item">  <a class="nav-link text-dark" href="/">Home</a> </li>
+                        <li class="nav-item">  <a class="nav-link text-dark" href="/transfer">Transfer</a> </li>
+                        <li class="nav-item">  <a class="nav-link text-dark" href="/profile">Profile</a> </li>
+                        <li class="nav-item">  <a class="nav-link text-dark" href="contact">Contact</a> </li>
+                        <li class="nav-item">  <a class="nav-link" href="/logout">Log Off</a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h3 class="text-primary ">Home/ <span class="text-black-50">Log Off</span></h3>
+    </div>
+</head>
+<body>
+    <div>
+    <form th:action="@{/logout}" method="post">
+      <input class="btn btn-success text-white" type="submit" value="Logout" />
+    </form>
+    </div>
+</body>
+</html>

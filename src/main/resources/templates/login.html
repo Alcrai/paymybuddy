@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="../css/style.css"/>
+
+    <title>Please Log In</title>
+</head>
+<body>
+<div class="container p-15">
+    <div class="row m-auto p-5 ">
+        <div class="col-auto m-auto p-3 border">
+            <div class="inline-block text-center">
+            <button class="btn btn-success text-white">Pay My Buddy</button>
+            </div>
+            <div th:if="${param.error}">
+                Invalid username and password.
+            </div>
+
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
+
+            <form th:action="@{/login}" method="post">
+                <div class="p-3 justify-content-md-center">
+                    <input type="text" name="username" placeholder="Email"/>
+                </div>
+                <div class="p-3 justify-content-md-center">
+                    <input type="password" name="password" placeholder="Password"/>
+                </div>
+                <div class="inline-block text-center">
+                   <p>
+                       <input type="checkbox" name="remember-me" /> Remember Me
+                   </p>
+                    <remember-me key="myAppKey"/>
+                </div>
+                <div class="p-3 inline-block text-center mt-5">
+                    <input class="btn btn-primary text-white" type="submit" value="Login"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

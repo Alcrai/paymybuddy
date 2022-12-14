@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Validation Bank</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <div class="container mt-3">
+        <div class="row ">
+            <div class="col-3">
+                <button class="btn btn-primary bg-success text-white">Pay My Buddy</button>
+            </div>
+            <div class="col-9">
+                <nav class="navbar-light">
+                    <ul class="nav justify-content-end text-black">
+                        <li class="nav-item">  <a class="nav-link text-dark" href="/">Home</a> </li>
+                        <li class="nav-item">  <a class="nav-link text-dark" href="/transfer">Transfer</a> </li>
+                        <li class="nav-item">  <a class="nav-link" href="/profile">Profile</a> </li>
+                        <li class="nav-item">  <a class="nav-link text-dark" href="contact">Contact</a> </li>
+                        <li class="nav-item">  <a class="nav-link text-dark" href="/logout">Log Off</a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-light">
+        <h3 class="text-primary">Home/ <span class="text-black-50">Transfer/Supply</span></h3>
+    </div>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <form class="row justify-content-md-center p-2" th:method="post" th:action="@{/transfertemp}" >
+            <h2>Confirmation</h2>
+            <div class="invisible" name="option">
+                <p th:text="${option}"></p>
+               <!-- <input  name="option" class="form-control" th:text="${option}"/>-->
+
+            </div>
+            <div class="col-auto">
+                <p>
+                   <span th:text="${operation}">Transfer/Supply</span>
+                </p>
+            </div>
+            <div class="col-auto">
+            <p>
+                Bank Name: <span th:text="${nameaccount}">Nom Banque</span> <br>
+                Account Number: <span th:text="${iban}">iban</span>
+            </p>
+            </div>
+            <div class="col-auto" name="amount">
+               <p>Amount : <span th:text="${amount}"> </span> €</p>
+
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success text-white btn-block">Validate</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

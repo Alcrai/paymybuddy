@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<link rel="stylesheet" href="../css/style.css" />
+<head>
+  <meta charset="UTF-8">
+  <title>Transfer/Supply</title>
+  <div class="container mt-3">
+    <div class="row ">
+      <div class="col-3">
+        <button class="btn btn-primary bg-success text-white">Pay My Buddy</button>
+      </div>
+      <div class="col-9">
+        <nav class="navbar-light">
+          <ul class="nav justify-content-end text-black">
+            <li class="nav-item">  <a class="nav-link text-dark" href="/">Home</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/transfer">Transfer</a> </li>
+            <li class="nav-item">  <a class="nav-link" href="/profile">Profile</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="contact">Contact</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/logout">Log Off</a> </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container bg-light">
+    <h3 class="text-primary ">Home/ <span class="text-black-50">Transfer/Supply</span></h3>
+  </div>
+</head>
+<body>
+<div class="container">
+  <div class="col-auto">
+    <h2>Balance : <span th:text="${balance}">balance</span></h2>
+  </div>
+  <div class="row">
+    <h2>Supply Account</h2>
+    <form class="row justify-content-md p-2" th:method="post" th:action="@{/validationbank}" >
+      <div class="col-auto">
+        <select name="option" class="form-select">
+          <option value="0">Select Connection</option>
+          <option value="1">Supply</option>
+          <option value="2">Transfer Out</option>
+        </select>
+      </div>
+      <div class="col-auto">
+        <p>
+          Bank Name: <span th:text="${bankaccount.name}">NomBanque</span> <br>
+          Account Number: <span th:text="${bankaccount.iban}">iban</span>
+        </p>
+      </div>
+      <div class="col-auto">
+        <input type="number" name="amount" class="form-control"  placeholder="0€">
+      </div>
+
+      <div class="col-auto">
+        <button class="btn btn-success text-white" type="submit">Validate</button>
+      </div>
+      <div>
+        <p class="bg-danger text-white" th:text="${information}"></p>
+      </div>
+    </form>
+  </div>
+
+
+</div>
+
+
+</body>
+</html>

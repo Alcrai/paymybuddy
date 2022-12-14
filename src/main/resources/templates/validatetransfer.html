@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ValidateTransfer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <div class="container mt-3">
+    <div class="row ">
+      <div class="col-3">
+        <button class="btn btn-success text-white">Pay My Buddy</button>
+      </div>
+      <div class="col-9">
+        <nav class="navbar-light">
+          <ul class="nav justify-content-end text-black">
+            <li class="nav-item">  <a class="nav-link text-dark" href="/">Home</a> </li>
+            <li class="nav-item active">  <a class="nav-link" href="/transfer">Transfer</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/profile">Profile</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="contact">Contact</a> </li>
+            <li class="nav-item">  <a class="nav-link text-dark" href="/logout">Log Off</a> </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="container bg-light">
+    <h3 class="text-primary">Home/ <span class="text-black-50">Transfer</span></h3>
+  </div>
+</head>
+<body>
+  <div class="container p-3">
+    <div class="row m-5">
+      <form class="row justify-content-md-center p-2" th:method="post" th:action="@{/validatetransfer}" th:object="${transaction}">
+      <h2>Confirm Transfer</h2>
+      <div class="col-auto bg-light">
+        <p>Send : <span th:text="${userreceive.firstName}+' '+${userreceive.lastName}">NOM </span> <br>
+          Amount : <span th:text="${transactionIn.amount}">Amount</span></p>
+      </div>
+      <div class="col-auto">
+        <input type="text" name="comment" class="form-control" id="comment" placeholder="comment" >
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-success text-white btn-block">Validate</button>
+      </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
